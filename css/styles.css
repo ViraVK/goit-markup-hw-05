@@ -617,13 +617,14 @@ margin-left: 16px;
 
 .modal-close-icon:hover,
 .modal-close-icon:focus {
-fill:#ffffff;
+
 }
 
 .modal-close-btn:hover,
 .modal-close-btn:focus {
  border: none;
  background-color: #404bbf;
+ fill:#ffffff;
 }
 
 .modal-slogan {
