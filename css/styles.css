@@ -500,7 +500,7 @@ margin-right: 120px;
 }
 .subscribe-form {
   display: flex;
-  column-gap: 24px;
+  gap: 24px;
   margin-top: 16px;
 }
 
@@ -508,6 +508,7 @@ margin-right: 120px;
   width: 264px;
   height: 40px;
   font-weight: 400;
+  font-size: 12px;
   line-height: 2;
   letter-spacing: 0.04em;
   color: #fff;
@@ -520,7 +521,7 @@ margin-right: 120px;
 }
 
 .subscribe-form-input::placeholder {
-  color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
 }
 
 .subscribe-form-input:focus {
@@ -531,23 +532,22 @@ margin-right: 120px;
 .subscribe-form-submit {
   min-width: 165px;
   height: 40px;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  padding: 8 24px;
   border: none;
   border-radius: 4px;
   background-color: #4d5ae5;
   color: #ffffff;
   cursor: pointer;
- display: flex;
- justify-content: center;
- align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: color 250ms linear, background-color 250ms linear;
 }
 
- 
 .subscribe-form-submit:hover,
 .subscribe-form-submit:focus {
   background-color: #404bbf;
@@ -564,31 +564,32 @@ margin-left: 16px;
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: rgba(46, 47, 66, 0.4);
-  z-index: 999999;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: hidden;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+              visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-backdrop.is-open {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 
 .modal {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 408px;
-  height: 80%;
-  max-height: 584px;
-  overflow: auto;
+  min-height: 584px;
+  transform: translate( -50%, -50%);
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 2px 1px 0 rgba(0, 0, 0, 0.2);
   background-color: #fcfcfc;
   border-radius: 4px;
   padding: 72px 24px 24px 24px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-close-btn {
@@ -597,14 +598,22 @@ margin-left: 16px;
   right: 24px;
   width: 24px;
   height: 24px;
-  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: #e7e9fc;
   padding: 0;
   line-height: 0;
+  cursor: pointer;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
               border 250ms cubic-bezier(0.4, 0, 0.2, 1),
               background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close-icon {
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-close-btn:hover,
 .modal-close-btn:focus {
@@ -652,6 +661,7 @@ margin-left: 16px;
   border-radius: 4px;
   background-color: transparent;
   padding-left: 38px;
+  outline: transparent;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -678,12 +688,13 @@ margin-left: 16px;
   font-size: 12px;
   letter-spacing: 0.04em;
   line-height: 1.17;
-  color: #000;
+  color: rgba(46, 47, 66, 0.4);
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 4px;
   background-color: transparent;
   padding: 8px 16px;
   resize: none;
+  outline: transparent;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -708,8 +719,8 @@ color: #8e8f99;
 
 .review-form-checkbox:checked+.review-form-checkbox-label>.review-form-custom-checkbox {
   background-color: #404bbf;
-  border-color: #404bbf;
-  fill: #ffffff;
+  border: none;
+  fill: #f4f4fd;
 }
 
 .review-form-checkbox:focus+.review-form-checkbox-label>.review-form-custom-checkbox {
@@ -725,8 +736,11 @@ color: #8e8f99;
   border-radius: 2px;
   border: 1px solid rgba(46, 47, 66, 0.4);
   cursor: pointer;
-  fill: none;
+  fill: transparent;
   margin-right: 8px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+              border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+              fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .review-form-policy-link {
   text-decoration: underline;
@@ -746,6 +760,7 @@ color: #8e8f99;
   color: #fff;
   border-radius: 4px;
   padding: 16px 32px;
+  cursor: pointer;
   border: none;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
   background-color: #4d5ae5;
